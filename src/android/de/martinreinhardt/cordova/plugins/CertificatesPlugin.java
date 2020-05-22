@@ -89,7 +89,7 @@ public class CertificatesPlugin extends CordovaPlugin {
                 cordova.getActivity().runOnUiThread(new Runnable() {
                         public void run() {
                               try {
-//                                CordovaActivity ca = (CordovaActivity) cordova.getActivity();
+                                  SystemWebView systemWebView = new SystemWebView(webView.getView().getContext());
 //                                SystemWebView view = (SystemWebView)webView.getView();
                                 CertificatesCordovaWebViewClient cWebClient =
                                     new CertificatesCordovaWebViewClient((SystemWebViewEngine)webView.getEngine());
@@ -100,7 +100,7 @@ public class CertificatesPlugin extends CordovaPlugin {
                                 // this fixes a crash that displays the error message:
                                 // "The connection to the server was unsuccessful. 
                                 webView.stopLoading();
-//                                view.setWebViewClient(cWebClient);
+                                systemWebView.setWebViewClient(cWebClient);
                               } catch(Exception e){
                                 Log.e(LOG_TAG, "Got unkown error during setting webview in activity", e);
                               }
